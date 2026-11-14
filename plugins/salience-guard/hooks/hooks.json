@@ -1,0 +1,41 @@
+{
+  "description": "Salience Guard: every Claude skill, agent and slash command must pass a SkillSpector security scan before it can run. Installs SkillSpector and a background watcher on first use.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/bash \"${CLAUDE_PLUGIN_ROOT}/scripts/ensure.sh\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Skill|Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/bash \"${CLAUDE_PLUGIN_ROOT}/scripts/gate.sh\"",
+            "timeout": 30,
+            "statusMessage": "Salience Guard"
+          }
+        ]
+      }
+    ],
+    "UserPromptExpansion": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "SKILLSPECTOR_GATE_EVENT=expansion /bin/bash \"${CLAUDE_PLUGIN_ROOT}/scripts/gate.sh\"",
+            "timeout": 30,
+            "statusMessage": "Salience Guard"
+          }
+        ]
+      }
+    ]
+  }
+}

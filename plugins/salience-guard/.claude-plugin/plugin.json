@@ -1,0 +1,9 @@
+{
+  "name": "salience-guard",
+  "version": "1.0.0",
+  "description": "Security gate for the Salience Media Claude setup: scans every new or changed skill, agent and slash command with NVIDIA SkillSpector and blocks it until it passes. Mac notifications for every new skill.",
+  "author": {
+    "name": "Salience Media"
+  },
+  "keywords": ["security", "skills", "skillspector"]
+}

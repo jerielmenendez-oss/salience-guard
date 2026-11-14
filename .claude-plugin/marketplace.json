@@ -1,0 +1,14 @@
+{
+  "name": "salience",
+  "description": "Salience Media internal Claude Code plugins",
+  "owner": {
+    "name": "Salience Media"
+  },
+  "plugins": [
+    {
+      "name": "salience-guard",
+      "source": "./plugins/salience-guard",
+      "description": "Blocks any Claude skill, agent or slash command until NVIDIA SkillSpector has scanned it and found it safe."
+    }
+  ]
+}
